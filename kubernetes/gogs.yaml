@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gogs
+  name: gogs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gogs
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gogs
+    spec:
+      containers:
+      - image: docker.io/gogs/gogs
+        name: gogs
+        env:
+        - name: DB_TYPE
+          value: postgres
+        - name: HOST
+          value: postgres 
+        - name: NAME
+          value: database1
+        - name: USER
+          value: user1
+        - name: PASSWD
+          value: userpass      
+
+        resources: {}
+status: {}
